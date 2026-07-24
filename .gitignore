@@ -1,0 +1,27 @@
+# Visual Studio
+.vs/
+
+# Build directories
+out/
+build/
+x64/
+Debug/
+Release/
+
+# CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+compile_commands.json
+Makefile
+
+# Executables and libraries
+*.exe
+*.dll
+*.lib
+*.obj
+*.pdb
+*.ilk
+
+# Logs
+*.log
