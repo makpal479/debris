@@ -11,6 +11,9 @@ find_package(SFML 2.6 COMPONENTS graphics window system REQUIRED)
 
 add_executable(PixelSandbox
     src/main.cpp
+    src/Game.cpp
+    src/Player.cpp
+    src/Tile.cpp
 )
 
 target_link_libraries(PixelSandbox PRIVATE
@@ -20,9 +23,7 @@ target_link_libraries(PixelSandbox PRIVATE
 )
 
 add_custom_command(TARGET PixelSandbox POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        "$<$<CONFIG:Debug>:${CMAKE_SOURCE_DIR}/../SFML-2.6.2/bin/sfml-graphics-d-2.dll>$<$<NOT:$<CONFIG:Debug>>:${CMAKE_SOURCE_DIR}/../SFML-2.6.2/bin/sfml-graphics-2.dll>"
-        "$<$<CONFIG:Debug>:${CMAKE_SOURCE_DIR}/../SFML-2.6.2/bin/sfml-window-d-2.dll>$<$<NOT:$<CONFIG:Debug>>:${CMAKE_SOURCE_DIR}/../SFML-2.6.2/bin/sfml-window-2.dll>"
-        "$<$<CONFIG:Debug>:${CMAKE_SOURCE_DIR}/../SFML-2.6.2/bin/sfml-system-d-2.dll>$<$<NOT:$<CONFIG:Debug>>:${CMAKE_SOURCE_DIR}/../SFML-2.6.2/bin/sfml-system-2.dll>"
-        $<TARGET_FILE_DIR:PixelSandbox>
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+        "${CMAKE_SOURCE_DIR}/../SFML-2.6.2/bin"
+        "$<TARGET_FILE_DIR:PixelSandbox>"
 )
