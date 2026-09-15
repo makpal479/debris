@@ -14,6 +14,12 @@ add_executable(PixelSandbox
     src/Game.cpp
     src/Player.cpp
     src/Tile.cpp
+    src/World.cpp
+    src/WorldGenerator.cpp
+    src/Tree.cpp
+    src/ItemEntity.cpp
+    src/Inventory.cpp
+    src/InventoryUI.cpp
 )
 
 target_link_libraries(PixelSandbox PRIVATE
@@ -24,6 +30,6 @@ target_link_libraries(PixelSandbox PRIVATE
 
 add_custom_command(TARGET PixelSandbox POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
-        "${CMAKE_SOURCE_DIR}/../SFML-2.6.2/bin"
-        "$<TARGET_FILE_DIR:PixelSandbox>"
+    ${CMAKE_SOURCE_DIR}/assets
+    $<TARGET_FILE_DIR:PixelSandbox>/assets
 )

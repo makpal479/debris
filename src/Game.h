@@ -2,7 +2,9 @@
 
 #include <SFML/Graphics.hpp>
 #include "Player.h"
-#include "Tile.h"
+#include "World.h"
+#include "Inventory.h"
+#include "InventoryUI.h"
 
 class Game
 {
@@ -15,12 +17,14 @@ private:
     void processEvents();
     void update(sf::Time dTime);
     void render();
-    Tile testTile;
-    
 
 private:
     sf::RenderWindow main_window;
     Player player;
+    World world;
     sf::Clock clock;
     sf::View camera;
+    Inventory inventory;
+    InventoryUI inventoryUI;
+    
 };
